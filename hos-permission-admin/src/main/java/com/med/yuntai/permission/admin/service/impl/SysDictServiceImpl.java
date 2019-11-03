@@ -7,6 +7,7 @@ import com.med.yuntai.permission.core.page.MybatisPageHelper;
 import com.med.yuntai.permission.core.page.PageRequest;
 import com.med.yuntai.permission.core.page.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @author: yang Qiankun
  * @create: 2019-11-02 23:20
  **/
+@Service
 public class SysDictServiceImpl implements SysDictService {
     
     @Autowired
