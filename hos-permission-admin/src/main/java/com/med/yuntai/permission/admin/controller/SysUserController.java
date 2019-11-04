@@ -1,10 +1,14 @@
 package com.med.yuntai.permission.admin.controller;
 
 import com.med.yuntai.permission.admin.service.SysUserService;
+import com.med.yuntai.permission.common.utils.FileUtils;
 import com.med.yuntai.permission.core.http.HttpResult;
 import com.med.yuntai.permission.core.page.PageRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 
 /**
  * @program: hos-permission
@@ -27,5 +31,11 @@ public class SysUserController {
     @PostMapping(value = "/findPage")
     public HttpResult findPage(@RequestBody PageRequest pageRequest) {
         return HttpResult.ok(sysUserService.findPage(pageRequest));
+    }
+
+    @PostMapping(value="/exportExcelUser")
+    public void exportExcelUser(@RequestBody PageRequest pageRequest, HttpServletResponse res) {
+        File file = sysUserService.createUserExcelFile(pageRequest);
+        FileUtils.downloadFile(res, file, file.getName());
     }
 }

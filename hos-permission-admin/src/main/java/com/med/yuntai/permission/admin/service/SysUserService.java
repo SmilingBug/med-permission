@@ -1,8 +1,10 @@
 package com.med.yuntai.permission.admin.service;
 
 import com.med.yuntai.permission.admin.model.SysUser;
+import com.med.yuntai.permission.core.page.PageRequest;
 import com.med.yuntai.permission.core.service.CurdService;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -14,4 +16,11 @@ import java.util.List;
 public interface SysUserService extends CurdService<SysUser> {
 
     List<SysUser> findAll();
+
+    /**
+     * 生成用户信息Excel文件
+     * @param pageRequest 要导出的分页查询参数
+     * @return
+     */
+    File createUserExcelFile(PageRequest pageRequest);
 }
